@@ -1,0 +1,53 @@
+.wrapper {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  /* backdrop-filter: blur(6px);
+  height: 100%;
+  width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transform: 'translate(-50%, -50%)',
+}
+
+.overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  width: 600px;
+  height: 600px;
+  background-color: teal;
+  padding: 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  pointer-events: all;
+}
+
+.card p {
+  font-size: 42px;
+  margin: 12px 0;
+}
+
+.card p.title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.card p.branding {
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}

@@ -1,0 +1,18 @@
+.button {
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  transition: .25s ease-in-out;
+  background-color: rgba(37, 37, 45);
+  line-height: 40px;
+  margin-right: 6px;
+  color: teal;
+  border: 0;
+  font-size: 16px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.button span {
+  margin-left: 5px;
+}

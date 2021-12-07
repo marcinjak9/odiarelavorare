@@ -1,0 +1,27 @@
+{
+  "name": "odiarelavorare",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "chroma-js": "^2.1.2",
+    "html2canvas": "^1.3.3",
+    "next": "12.0.7",
+    "papaparse": "^5.3.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-modal": "^3.14.4"
+  },
+  "devDependencies": {
+    "eslint": "8.4.0",
+    "eslint-config-next": "12.0.7"
+  }
+}
