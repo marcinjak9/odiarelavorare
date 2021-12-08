@@ -1,5 +1,48 @@
 .wrapper {
   width: 100%;
-  padding: 20px 40px;
+  padding: 12px 40px;
   background-color: #FF5F5D;
+  display: flex;
+  position: sticky;
+  top: 0;
+}
+
+.wrapper h3 {
+  margin: 0;
+  line-height: 1;
+  font-weight: 900;
+  color: #fff;
+  margin-right: 2rem;
+  line-height: 40px;
+}
+
+.navItems {
+  display: flex;
+  width: 100%;
+}
+
+.navItems a {
+  padding: 0 12px;
+  border-radius: 8px;
+  transition: .25s ease-in-out;
+  background-color: rgba(255,255,255,0);
+  /* line-height: 40px; */
+  font-weight: 300;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+}
+
+.navItems active {
+  font-weight: 600;
+}
+
+.navItems a:hover {
+  /* background-color: rgba(255,255,255,0.4); */
+  background-color: #f2f2f2;
+}
+
+.navItems a:last-child {
+  margin-left: auto;
+  font-weight: 900;
 }

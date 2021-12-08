@@ -5,7 +5,7 @@ export default function Button({ buttonProps, icon, label, link }) {
 
   const renderIcon = () => {
     if (icon) {
-      return <FontAwesomeIcon size="xl" icon={icon} />
+      return <FontAwesomeIcon size="lg" icon={icon} />
     }
   }
 

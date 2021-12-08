@@ -6,22 +6,30 @@ import Papa from 'papaparse';
 import html2canvas from 'html2canvas'
 import styles from '../styles/Quote.module.css'
 import RenderQuote from './RenderQuote';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSyncAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { useRouter } from 'next/router'
 
-const colors = chroma.scale(['#fafa6e','#2A4858']).mode('lch').colors(10);
-const getRandomColor = () => colors[Math.floor(Math.random() * 10)];
 
 const randomFromRange = (min, max) => Math.floor(Math.random() * (max-min) +min);
 
-export default function Quote({ onRefresh, color }) {
-  // const [color, setColor] = useState(getRandomColor)
+export default function Quote({ color }) {
+  const router = useRouter()
+  const { id } = router.query
+
   const [quote,setQuote] = useState()
   const [data, setData] = useState([])
   const [modal, setModal] = useState()
+  const [spin, setSpin] = useState(false)
+  console.log(quote)
+  
   useEffect(() => {
-    fetch('/entries.csv')
+    console.log('dataentry')
+    fetch('/dataentry.csv')
       .then((r) => r.text())
       .then((r) => {
         const { data } = Papa.parse(r)
+        console.log(data)
         // console.log(p)
         const formatted = data.map((item) => ({
           [data[0][0]]: item[0],
@@ -34,35 +42,42 @@ export default function Quote({ onRefresh, color }) {
   }, [])
 
   useEffect(() => {
+    console.log('changin')
     if (data.length > 0) {
-      newQuote()
+      if (!id) {
+        newQuote()
+      } else {
+        setQuote(data[id])
+      }
     }
-  }, [data])
+  }, [data, router.asPath])
 
-  // const generateCanvas = () => {
-  //   console.log(document.body)
-  //   html2canvas(document.getElementById('quote')).then(function(canvas) {
-  //     console.log(canvas.toDataURL())
-  //     setImg(canvas.toDataURL())
-  // });
-  // }
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setTimeout(() => {
+  //       const s = spin
+  //       console.log(spin)
+  //       setSpin((pstate) => !pstate)
+  //     }, 1000)
+  //   }, 3000);
+  //   return () => clearInterval(interval);
+  // }, []);
 
   const newQuote = () => {
-    setQuote(data[randomFromRange(0, data.length)]);
-    onRefresh();
+    const q = data[randomFromRange(0, data.length)];
+    setQuote(q);
+    router.push(q.id)
   }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.quote}>
         <h1 className={styles.title}>
-          Odio il lavoro perchè:
+          Odio il lavoro perché:
         </h1>
         <h2 className={styles.subtitle}>
-          <mark>{quote && quote.text}</mark>
+          {quote && quote.text}
         </h2>
-        <button onClick={newQuote}>New</button>
-        <button onClick={() => setModal(true)}>Share</button>
         <RenderQuote
           color={color}
           quote={quote && quote.text}
@@ -70,6 +85,16 @@ export default function Quote({ onRefresh, color }) {
           isOpen={modal}
           openModal={() => setModal(true)}
         />
+      </div>
+      <div className={styles.buttons}>
+        <a href="#" onClick={(e) => {e.preventDefault(); newQuote()}} className={styles.button}>
+          <FontAwesomeIcon icon={faSyncAlt} spin={spin} size="4x" color="white" />
+        </a>
+        <a href="#" onClick={(e) => {e.preventDefault(); setModal(true)}} className={styles.button}>
+          <FontAwesomeIcon icon={faShareAlt} spin={spin} size="4x" color="white" />
+        </a>
+        {/* <button onClick={newQuote}>New</button>
+        <button onClick={() => setModal(true)}>Share</button> */}
       </div>
     </div>
   )

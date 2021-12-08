@@ -16,12 +16,6 @@ import Modal from "react-modal";
 import styles from "../styles/RenderQuote.module.css";
 import Button from "./Button";
 
-const colors = chroma.scale(["#fafa6e", "#2A4858"]).mode("lch").colors(10);
-const getRandomColor = () => colors[Math.floor(Math.random() * 10)];
-
-const randomFromRange = (min, max) =>
-  Math.floor(Math.random() * (max - min) + min);
-
 export default function RenderQuote({ quote, color, closeModal, isOpen }) {
   const [img, setImg] = useState();
 
@@ -33,18 +27,50 @@ export default function RenderQuote({ quote, color, closeModal, isOpen }) {
   };
 
   useEffect(() => {
-    generateCanvas();
-  }, [quote]);
+    if (isOpen) {
+      generateCanvas();
+    }
+  }, [isOpen]);
+  // h = 550px
+  // 100c f = 42px
+  // 200c f = 21px
+  // 400c = 10px
+  // const q = "Vorrei svolgerlo senza sentir l'obbligo di mandare in pezzi la mia vita in caso di una pausa.";
+  // const q2 = "Vorrei svolgerlo senza sentir l'obbligo di mandare in pezzi la mia vita in caso di una pausa.Vorrei svolgerlo senza sentir l'obbligo di mandare in pezzi la mia vita in caso di una pausa.";
+  // const q3 = "Vorrei svolgerlo senza sentir l'obbligo di mandare in pezzi la mia vita in caso di una pausa.Vorrei svolgerlo senza sentir l'obbligo di mandare in pezzi la mia vita in caso di una pausa.Vorrei svolgerlo senza sentir l'obbligo di mandare in pezzi la mia vita in caso di una pausa.";
 
+  const size = () => {
+    if (!quote) {
+      return null;
+    }
+    if (quote.length <= 100) {
+      return '42px';
+    }
+    if (quote.length <= 200) {
+      return '36px'
+    }
+    if (quote.length <= 400) {
+      return '26px'
+    }
+    if (quote.length <= 800) {
+      return '21px'
+    }
+    if (quote.length <= 1000) {
+      return '16px'
+    }
+    return '15px'
+  }
+
+  // const fSize = 6000 / quote.length;
   return (
     <Modal
       isOpen={isOpen}
-      // onAfterOpen={afterOpenModal}
+      // isOpen={true}
       onRequestClose={closeModal}
-      // style={customStyles}
       contentLabel="Example Modal"
       className={styles.wrapper}
       shouldCloseOnOverlayClick
+      ariaHideApp={false}
       style={{
         overlay: {
           backgroundColor: 'rgba(0,0,0,0.5)'
@@ -59,8 +85,8 @@ export default function RenderQuote({ quote, color, closeModal, isOpen }) {
           id="quote"
         >
           <div>
-            <p className={styles.title}>Odio il lavoro perchè...</p>
-            <p>{quote}</p>
+            <p className={styles.title}>Odio il lavoro perché...</p>
+            <p style={{ fontSize: size() }}>{quote}</p>
           </div>
           <div>
             <p className={styles.branding}>odiarelavorare.it</p>
