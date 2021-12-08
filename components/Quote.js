@@ -21,16 +21,12 @@ export default function Quote({ color }) {
   const [data, setData] = useState([])
   const [modal, setModal] = useState()
   const [spin, setSpin] = useState(false)
-  console.log(quote)
   
   useEffect(() => {
-    console.log('dataentry')
     fetch('/dataentry.csv')
       .then((r) => r.text())
       .then((r) => {
         const { data } = Papa.parse(r)
-        console.log(data)
-        // console.log(p)
         const formatted = data.map((item) => ({
           [data[0][0]]: item[0],
           [data[0][1]]: item[1],
@@ -42,7 +38,6 @@ export default function Quote({ color }) {
   }, [])
 
   useEffect(() => {
-    console.log('changin')
     if (data.length > 0) {
       if (!id) {
         newQuote()

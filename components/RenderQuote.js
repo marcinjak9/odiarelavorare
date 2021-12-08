@@ -18,19 +18,19 @@ import Button from "./Button";
 
 export default function RenderQuote({ quote, color, closeModal, isOpen }) {
   const [img, setImg] = useState();
+  const [ready, setReady] = useState()
 
   const generateCanvas = () => {
-    console.log(document.body);
     html2canvas(document.getElementById("quote")).then(function (canvas) {
       setImg(canvas.toDataURL());
     });
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && quote && ready) {
       generateCanvas();
     }
-  }, [isOpen]);
+  }, [isOpen, quote, ready]);
   // h = 550px
   // 100c f = 42px
   // 200c f = 21px
@@ -66,11 +66,12 @@ export default function RenderQuote({ quote, color, closeModal, isOpen }) {
     <Modal
       isOpen={isOpen}
       // isOpen={true}
-      onRequestClose={closeModal}
+      onRequestClose={() => {closeModal(); setReady(false)}}
       contentLabel="Example Modal"
       className={styles.wrapper}
       shouldCloseOnOverlayClick
       ariaHideApp={false}
+      onAfterOpen={() => setReady(true)}
       style={{
         overlay: {
           backgroundColor: 'rgba(0,0,0,0.5)'
