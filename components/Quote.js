@@ -11,58 +11,30 @@ import { faSyncAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
 
 
-const randomFromRange = (min, max) => Math.floor(Math.random() * (max-min) +min);
-
-export default function Quote({ color }) {
-  const router = useRouter()
-  const { id } = router.query
-
-  const [quote,setQuote] = useState()
-  const [data, setData] = useState([])
-  const [modal, setModal] = useState()
-  const [spin, setSpin] = useState(false)
-  
-  useEffect(() => {
-    fetch('/dataentry.csv')
-      .then((r) => r.text())
-      .then((r) => {
-        const { data } = Papa.parse(r)
-        const formatted = data.map((item) => ({
-          [data[0][0]]: item[0],
-          [data[0][1]]: item[1],
-          [data[0][2]]: item[2],
-        }))
-        formatted.shift()
-        setData(formatted)
-      })
-  }, [])
-
-  useEffect(() => {
-    if (data.length > 0) {
-      if (!id) {
-        newQuote()
-      } else {
-        setQuote(data[id])
-      }
+export default function Quote({ color, quote, modal, setModal }) {
+  const size = () => {
+    if (!quote) {
+      return null;
     }
-  }, [data, router.asPath])
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setTimeout(() => {
-  //       const s = spin
-  //       console.log(spin)
-  //       setSpin((pstate) => !pstate)
-  //     }, 1000)
-  //   }, 3000);
-  //   return () => clearInterval(interval);
-  // }, []);
-
-  const newQuote = () => {
-    const q = data[randomFromRange(0, data.length)];
-    setQuote(q);
-    router.push(q.id)
+    if (quote.text.length <= 100) {
+      return styles.xxl;
+    }
+    if (quote.text.length <= 200) {
+      return styles.xl
+    }
+    if (quote.text.length <= 400) {
+      return styles.lg
+    }
+    if (quote.text.length <= 800) {
+      return styles.md
+    }
+    if (quote.text.length <= 1000) {
+      return styles.sm
+    }
+    return styles.xs
   }
+
+  console.log(size())
 
   return (
     <div className={styles.wrapper}>
@@ -70,7 +42,7 @@ export default function Quote({ color }) {
         <h1 className={styles.title}>
           Odio il lavoro perché:
         </h1>
-        <h2 className={styles.subtitle}>
+        <h2 className={`${styles.subtitle} ${size()}`}>
           {quote && quote.text}
         </h2>
         <RenderQuote
@@ -83,10 +55,10 @@ export default function Quote({ color }) {
       </div>
       <div className={styles.buttons}>
         <a href="#" onClick={(e) => {e.preventDefault(); newQuote()}} className={styles.button}>
-          <FontAwesomeIcon icon={faSyncAlt} spin={spin} size="4x" color="white" />
+          <FontAwesomeIcon icon={faSyncAlt} size="4x" color="white" />
         </a>
         <a href="#" onClick={(e) => {e.preventDefault(); setModal(true)}} className={styles.button}>
-          <FontAwesomeIcon icon={faShareAlt} spin={spin} size="4x" color="white" />
+          <FontAwesomeIcon icon={faShareAlt} size="4x" color="white" />
         </a>
         {/* <button onClick={newQuote}>New</button>
         <button onClick={() => setModal(true)}>Share</button> */}

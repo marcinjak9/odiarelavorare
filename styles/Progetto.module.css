@@ -7,6 +7,7 @@
   font-size: 1.3rem;
   padding: 0 20px;
   padding-bottom: 10rem;
+  word-break: break-word;
 }
 
 .container h1 {
@@ -15,4 +16,10 @@
 
 .container a {
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 720px) {
+  .container h1 {
+    font-size: 2.5rem;
+  }
 }

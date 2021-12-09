@@ -32,10 +32,13 @@
 }
 
 .card p {
-  font-size: 42px;
   margin: 12px 0;
   font-weight: 900;
   color: #fff;
+}
+
+.overflow {
+  overflow-y: scroll;
 }
 
 .card p.title {
@@ -54,4 +57,46 @@
   font-weight: bold;
   margin-bottom: 12px;
   color: #FF5F5D;
+}
+
+.cardAbs {
+  position: absolute;
+  width: 700px !important;
+  height: 700px !important;
+  top: 99999px;
+  left: 99999px;
+}
+
+p.xxl {
+  font-size: 42px;
+}
+p.xl {
+  font-size: 36px;
+}
+p.lg {
+  font-size: 26px;
+}
+p.md {
+  font-size: 21px;
+}
+p.sm {
+  font-size: 16px;
+}
+p.xs {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 720px) {
+  .card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .card p.title {
+    font-size: 28px;
+  }
+
+  .overflow {
+    max-height: 320px;
+  }
 }

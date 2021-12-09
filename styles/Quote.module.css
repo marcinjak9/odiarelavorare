@@ -23,7 +23,7 @@
   font-size: 64px;
   font-weight: 900;
   /* height: 600px; */
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .title,
@@ -53,7 +53,7 @@
 
 .quote {
   max-width: 800px;
-  height: 600px;
+  min-height: 600px;
   flex: 4;
   display: flex;
   flex-direction: column;
@@ -79,4 +79,41 @@
 
 .button:hover svg{
   color: #FF5F5D;
+}
+
+.xxl {
+  font-size: 42px;
+}
+.xl {
+  font-size: 36px;
+}
+.lg {
+  font-size: 34px;
+}
+.md {
+  font-size: 32px;
+}
+.sm {
+  font-size: 29px;
+}
+.xs {
+  font-size: 26px;
+}
+
+@media only screen and (max-width: 720px) {
+  .wrapper {
+    flex-direction: column;
+    padding: 55px 20px;
+  }
+
+  .quote {
+    min-height: 0;
+  }
+  .buttons {
+    display: none;
+  }
+
+  .xxl {
+    font-size: 38px;
+  }
 }

@@ -1,6 +1,6 @@
 .wrapper {
   width: 100%;
-  padding: 12px 40px;
+  padding: 8px 20px;
   background-color: #FF5F5D;
   display: flex;
   position: sticky;
@@ -45,4 +45,47 @@
 .navItems a:last-child {
   margin-left: auto;
   font-weight: 900;
+}
+
+.navMobile {
+  display: none;
+}
+
+@media only screen and (max-width: 720px) {
+  /* .wrapper {
+    display: none;
+  } */
+  .navItems {
+    /* display: none; */
+    position: absolute;
+    top: 55px;
+    background: #FF5F5D;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    padding: 1rem;
+    transition: all .3s;
+  }
+
+  .navItemsOpen {
+    display: flex;
+  }
+
+  .navItems a {
+    margin-bottom: 1rem;
+  }
+
+  .navItems a:last-child {
+    margin-left: inherit;
+    font-weight: 900;
+  }
+
+  .navMobile {
+    display: block;
+    line-height: 38px;
+    margin-left: auto;
+  }
 }

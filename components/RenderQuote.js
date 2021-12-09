@@ -44,21 +44,21 @@ export default function RenderQuote({ quote, color, closeModal, isOpen }) {
       return null;
     }
     if (quote.length <= 100) {
-      return '42px';
+      return styles.xxl
     }
     if (quote.length <= 200) {
-      return '36px'
+      return styles.xl
     }
     if (quote.length <= 400) {
-      return '26px'
+      return styles.lg
     }
     if (quote.length <= 800) {
-      return '21px'
+      return styles.md
     }
     if (quote.length <= 1000) {
-      return '16px'
+      return styles.sm
     }
-    return '15px'
+    return styles.xs
   }
 
   // const fSize = 6000 / quote.length;
@@ -83,11 +83,79 @@ export default function RenderQuote({ quote, color, closeModal, isOpen }) {
           onClick={(e) => e.stopPropagation()}
           className={styles.card}
           style={{ backgroundColor: color }}
+          // id="quote"
+        >
+          <div>
+            <p className={styles.title}>Odio il lavoro perché...</p>
+            <p className={`${size()} ${styles.overflow}`}>{quote}</p>
+          </div>
+          <div>
+            <p className={styles.branding}>odiarelavorare.it</p>
+            <br />
+            <div className={styles.buttonContainer}>
+              <Button
+                link
+                label="Tweet"
+                icon={faTwitter}
+                buttonProps={{
+                  "data-html2canvas-ignore": true,
+                  target: "_self",
+                  download: "odiare-il-lavoro.png",
+                  href: img,
+                  style: { color },
+                }}
+              />
+              <Button
+                link
+                label="Instagram"
+                icon={faInstagram}
+                buttonProps={{
+                  "data-html2canvas-ignore": true,
+                  target: "_self",
+                  download: "odiare-il-lavoro.png",
+                  href: img,
+                  style: { color },
+                }}
+              />
+              <Button
+                link
+                label="FB"
+                icon={faFacebook}
+                buttonProps={{
+                  "data-html2canvas-ignore": true,
+                  target: "_self",
+                  download: "odiare-il-lavoro.png",
+                  href: img,
+                  style: { color },
+                }}
+              />
+              <Button
+                link
+                label="Salva"
+                icon={faCopy}
+                buttonProps={{
+                  "data-html2canvas-ignore": true,
+                  target: "_self",
+                  download: "odiare-il-lavoro.png",
+                  href: img,
+                  style: { color },
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+
+
+        <div
+          onClick={(e) => e.stopPropagation()}
+          className={`${styles.card} ${styles.cardAbs}`}
+          style={{ backgroundColor: color }}
           id="quote"
         >
           <div>
             <p className={styles.title}>Odio il lavoro perché...</p>
-            <p style={{ fontSize: size() }}>{quote}</p>
+            <p className={size()}>{quote}</p>
           </div>
           <div>
             <p className={styles.branding}>odiarelavorare.it</p>

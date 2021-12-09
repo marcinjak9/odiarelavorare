@@ -1,8 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import '../styles/Nav.module.css'
 import styles from "../styles/Nav.module.css";
+import { useState } from "react";
 
 export default function Nav() {
+  const [menu, setMenu] = useState(false)
   const router = useRouter();
   const linkCLass = (href) => {
   if (href === router.pathname) {
@@ -10,6 +15,10 @@ export default function Nav() {
   }
   return "";
   };
+
+  const toggleMenu = () => {
+    setMenu((m) => !m)
+  }
   return (
     <div className={styles.wrapper}>
       <div>
@@ -19,7 +28,12 @@ export default function Nav() {
           </a>
         </Link>
       </div>
-      <div className={styles.navItems}>
+      <div className={styles.navMobile}>
+        <a href="#" onClick={toggleMenu}>
+          <FontAwesomeIcon icon={faBars} color="white" size="lg" />
+        </a>
+      </div>
+      <div className={`${styles.navItems} ${menu ? styles.navItemsOpen : ''}`}>
         <Link href="/progetto">
           <a className={linkCLass("/progetto")}>Il Progetto</a>
         </Link>
