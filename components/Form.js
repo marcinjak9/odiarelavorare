@@ -73,7 +73,7 @@ export default function Form () {
       <div className={styles.formContainer}>
         <h3>Odio il lavoro perchè:</h3>
         <textarea
-          placeholder="Perchè il mio capo è un coglione"
+          placeholder="Perchè è obbligatorio"
           value={text} onChange={(e) => setText(e.target.value)}
           className={styles.form}
         />
