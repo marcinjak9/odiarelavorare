@@ -21,7 +21,6 @@ const randomFromRange = (min, max) =>
 export default function MainSection({ defaultQuote }) {
   const router = useRouter();
   const { id } = router.query;
-console.log(router)
   const [quote, setQuote] = useState(defaultQuote);
   const [data, setData] = useState([]);
   const [modal, setModal] = useState();
