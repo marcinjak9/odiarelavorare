@@ -203,8 +203,8 @@ export default function RenderQuote({ quote, color, closeModal, isOpen }) {
                 icon={faCopy}
                 buttonProps={{
                   "data-html2canvas-ignore": true,
-                  target: "_self",
-                  download: "odiare-il-lavoro.png",
+                  // target: "_self",
+                  // download: "odiare-il-lavoro.png",
                   href: img,
                   style: { color },
                 }}

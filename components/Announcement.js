@@ -19,8 +19,6 @@ export default function Announcement() {
     }
   }, [])
 
-  console.log(barOpen)
-
   const closeBar = (e) => {
     e.preventDefault();
     setBarOpen(false)

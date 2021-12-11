@@ -7,11 +7,12 @@ import html2canvas from 'html2canvas'
 import styles from '../styles/Quote.module.css'
 import RenderQuote from './RenderQuote';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSyncAlt, faShareAlt } from '@fortawesome/free-solid-svg-icons'
+import { faSyncAlt, faShareAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { useRouter } from 'next/router'
+import Button from './Button';
 
 
-export default function Quote({ color, quote, modal, setModal }) {
+export default function Quote({ color, quote, modal, setModal, newQuote }) {
   const size = () => {
     if (!quote) {
       return null;
@@ -34,8 +35,6 @@ export default function Quote({ color, quote, modal, setModal }) {
     return styles.xs
   }
 
-  console.log(size())
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.quote}>
@@ -54,12 +53,38 @@ export default function Quote({ color, quote, modal, setModal }) {
         />
       </div>
       <div className={styles.buttons}>
-        <a href="#" onClick={(e) => {e.preventDefault(); newQuote()}} className={styles.button}>
+        <Button
+          labelMobile
+          label="Condividi"
+          buttonProps={{
+            onClick: () => setModal(true),
+            style: { backgroundColor: "#FF5F5D", color: "white", marginBottom: '2rem', fontSize: '1.5rem', height: 60 },
+          }}
+          icon={faShareAlt}
+          iconRight
+          iconProps={{
+            // size: '4x'
+          }}
+        />
+        <Button
+          labelMobile
+          label="Prossima"
+          buttonProps={{
+            onClick: newQuote,
+            style: { backgroundColor: "#FF5F5D", color: "white", fontSize: '1.5rem', height: 60 },
+          }}
+          icon={faArrowRight}
+          iconRight
+          iconProps={{
+            // size: '4x'
+          }}
+        />
+        {/* <a href="#" onClick={(e) => {e.preventDefault(); newQuote()}} className={styles.button}>
           <FontAwesomeIcon icon={faSyncAlt} size="4x" color="white" />
         </a>
         <a href="#" onClick={(e) => {e.preventDefault(); setModal(true)}} className={styles.button}>
           <FontAwesomeIcon icon={faShareAlt} size="4x" color="white" />
-        </a>
+        </a> */}
         {/* <button onClick={newQuote}>New</button>
         <button onClick={() => setModal(true)}>Share</button> */}
       </div>

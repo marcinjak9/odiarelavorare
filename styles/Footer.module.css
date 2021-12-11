@@ -1,0 +1,50 @@
+.wrapper {
+  width: 100%;
+  background-color: #333;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #f2f2f2
+}
+
+.lWrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrapper a {
+  padding: 10px 5px;
+  font-size: 1.1rem;
+}
+
+.wrapperSmall {
+  padding: 10px 40px;
+  padding-bottom: 20px
+}
+
+.wrapperSmall a {
+  font-size: 0.9rem;
+  font-size: 300;
+  font-weight: 3000;
+  color: #bdbcbc;
+}
+
+.small {
+  font-size: 0.7rem;
+}
+
+@media only screen and (max-width: 720px) {
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .lWrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .small {
+    padding-top: 10px;
+  }
+}

@@ -1,4 +1,7 @@
+import dynamic from 'next/dynamic'
 import PageLayout from '../components/PageLayout'
+import Form from '../components/Form'
+
 
 export const meta = {
   title: 'Markdown/MDX with Next.js',
@@ -31,6 +34,6 @@ Ti chiedo dunque di provare a sforzarti e a riflettere: qual è l'aspetto del tu
 
 Puoi scrivere qui e il tuo commento verrà pubblicato in modo da renderti completamente irriconoscibile.
 
-
+<Form />
 
 export default ({ children }) => <PageLayout meta={meta}>{children}</PageLayout>

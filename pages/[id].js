@@ -5,9 +5,9 @@ const dev = process.env.NODE_ENV !== 'production';
 
 export const server = dev ? 'http://localhost:3000' : 'http://localhost:3000';
 
-export default function Id() {
+export default function Id(props) {
   return (
-   <MainSection />
+   <MainSection defaultQuote={props.quote} />
   )
 }
 
@@ -26,7 +26,7 @@ export async function getStaticProps({ params }) {
   }))
   formatted.shift()
 
-  const quote = formatted[params.id]
+  const quote = formatted[params.id - 1]
 
   if (quote && quote.id && quote.text) {
     return { props: { quote } }
