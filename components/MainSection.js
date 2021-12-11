@@ -21,10 +21,17 @@ const randomFromRange = (min, max) =>
 export default function MainSection({ defaultQuote }) {
   const router = useRouter();
   const { id } = router.query;
-
+console.log(router)
   const [quote, setQuote] = useState(defaultQuote);
   const [data, setData] = useState([]);
   const [modal, setModal] = useState();
+
+  // const pushRoute = (id) => {
+  //   if (router.pathname === "/q/[id]") {
+  //     return router.push(id)
+  //   }
+  //   return router.push(`q/${}`)
+  // }
 
   useEffect(() => {
     fetch("/dataentry.csv")
@@ -47,6 +54,7 @@ export default function MainSection({ defaultQuote }) {
         newQuote();
       } else {
         setQuote(data[id - 1]);
+        
       }
     }
   }, [data, router.asPath]);
@@ -54,7 +62,7 @@ export default function MainSection({ defaultQuote }) {
   const newQuote = () => {
     const q = data[randomFromRange(0, data.length)];
     setQuote(q);
-    router.push(q.id);
+    router.push('/q/' + (q.id));
   };
 
   return (
