@@ -96,7 +96,6 @@ export default function Form () {
       <h3>Grazie della tua testimonianza ❤️</h3>
     )} */}
     <div className={styles.formContainer}>
-      <h3>Il form è temporaneamente fuori uso</h3>
       <p>Invia una mail a <a href="mailto:mail@odiarelavorare.it" style={{ color: '#FF5F5D', fontWeight: 600 }}>mail@odiarelavorare.it</a></p>
       <p>
         Se non vuoi usare una mail personale usa un servizio anonimo tipo <a href="https://guerrillamail.com" target="_blank" rel="noreferrer">guerrillamail.com</a>
