@@ -29,7 +29,7 @@ export default function Footer() {
     </div>
     <div className={`${styles.wrapper} ${styles.wrapperSmall}`}>
       <div>
-        <Link href="/progetto">
+        <Link href="/privacy">
           Privacy policy
         </Link>
         <Link href="/dev-manifesto">

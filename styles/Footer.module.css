@@ -42,6 +42,7 @@
   .lWrapper {
     flex-direction: column;
     text-align: center;
+    margin-bottom: 20px;
   }
 
   .small {

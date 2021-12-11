@@ -141,6 +141,7 @@
     right: 0;
     background-color: #FF5F5D;
     padding: 12px 20px;
+    padding-bottom: 20px;
     align-items: center;
     justify-content: center;
   }
