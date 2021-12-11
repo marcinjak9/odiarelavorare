@@ -1,11 +1,12 @@
+require('dotenv').config()
 const TelegramBot = require('node-telegram-bot-api');
 // import TelegramBot from 'node-telegram-bot-api';
 
-const token = '5042659957:AAGtr-sCyrbRrUw4ExdKV6CXm2W4ZdMS0hc'
+const token = process.env.TELEGRAM_TOKEN;
 
 const bot = new TelegramBot(token, {polling: true});
 
-const chat_id = '-772708022'
+const chat_id = process.env.CHAT_ID
 
 function objToString (obj) {
   var str = '';
