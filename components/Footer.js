@@ -22,8 +22,8 @@ export default function Footer() {
         </Link>
       </div>
       <div>
-        <Link href="mailto:info@odiarelavorare.it">
-          info@odiarelavorare.it
+        <Link href="mailto:mail@odiarelavorare.it">
+          mail@odiarelavorare.it
         </Link>
       </div>
     </div>
