@@ -1,5 +1,7 @@
 import PageLayout from '../components/PageLayout'
 
+import BMCButton from '../components/BMCButton'
+
 export const meta = {
   title: 'Il progetto Odiare Lavorare',
   description: ''
@@ -35,12 +37,6 @@ Odiamo sì, ma per amore dell’emancipazione umana.
 ## Sostienici
 Sostieni con un caffè l’attività di raccolta storie e fonti, oltre che un impegnativo lavoro di data entry che i militanti di CTOL hanno fatto per poter permettere alle storie di avere uno spazio e una piazza virtuale.
 
-<iframe 
-  id='kofiframe'
-  src='https://ko-fi.com/odiarelavorare/?hidefeed=true&widget=true&embed=true&preview=true'
-  style={{ border: 'none', width: '100%', padding: '4px', background: '#f9f9f9' }}
-  height='712'
-  title='odiarelavorare'>
-</iframe>
+<BMCButton />
 
 export default ({ children }) => <PageLayout meta={meta}>{children}</PageLayout>
