@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import MainSection from '../components/MainSection';
+import MainSection from '../../components/MainSection';
 
 const dev = process.env.NODE_ENV !== 'production';
 
