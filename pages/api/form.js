@@ -1,5 +1,5 @@
-require('dotenv').config()
-const TelegramBot = require('node-telegram-bot-api');
+// require('dotenv').config()
+// const TelegramBot = require('node-telegram-bot-api');
 // import TelegramBot from 'node-telegram-bot-api';
 
 const token = process.env.TELEGRAM_TOKEN;
@@ -7,7 +7,7 @@ const chat_id = process.env.CHAT_ID
 const secret = process.env.CAPTCHA_SECRET
 const sitekey = process.env.CAPTCHA_SITE_KEY
 
-const bot = new TelegramBot(token, {polling: true});
+// const bot = new TelegramBot(token, {polling: true});
 
 
 function objToString (obj) {
@@ -42,7 +42,7 @@ export default function handler(req, res) {
       // bot.sendMessage(chat_id, '*☭☭☭ A new comrade has arrived ☭☭☭*', { parse_mode: 'MarkdownV2'})
       const m = body
       delete m.solution
-      bot.sendMessage(chat_id, `*☭☭☭ A new comrade has arrived ☭☭☭* \n\n${objToString(body)}`, { parse_mode: 'Markdown'});
+      // bot.sendMessage(chat_id, `*☭☭☭ A new comrade has arrived ☭☭☭* \n\n${objToString(body)}`, { parse_mode: 'Markdown'});
       res.status(200).json({ success: true })
     }
     res.status(400).json({ message: 'No captcha provided' })
