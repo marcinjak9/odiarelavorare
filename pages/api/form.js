@@ -3,10 +3,12 @@ const TelegramBot = require('node-telegram-bot-api');
 // import TelegramBot from 'node-telegram-bot-api';
 
 const token = process.env.TELEGRAM_TOKEN;
+const chat_id = process.env.CHAT_ID
+const secret = process.env.CAPTCHA_SECRET
+const sitekey = process.env.CAPTCHA_SITE_KEY
 
 const bot = new TelegramBot(token, {polling: true});
 
-const chat_id = process.env.CHAT_ID
 
 function objToString (obj) {
   var str = '';
@@ -23,8 +25,8 @@ export default function handler(req, res) {
   const solution = body.solution
   const b = JSON.stringify({
     solution,
-    secret: 'A1O0THA4GP2JD0SU3VQB23JQO8KTGLOB5BK09HQP0ERULF6SV39JLMVA7Q',
-    sitekey: 'FCMS9L5U25GTQ7FH',
+    secret,
+    sitekey,
   })
   fetch('https://api.friendlycaptcha.com/api/v1/siteverify', {
     method: 'POST',
