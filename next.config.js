@@ -1,3 +1,4 @@
+const withTM = require('next-transpile-modules')(["friendly-challenge"]);
 // module.exports = {
 //   reactStrictMode: true,
 // }
@@ -8,6 +9,6 @@ const withMDX = require('@next/mdx')({
     rehypePlugins: [],
   },
 })
-module.exports = withMDX({
+module.exports = withTM(withMDX({
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
-})
+}))
