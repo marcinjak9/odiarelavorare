@@ -11,4 +11,7 @@ const withMDX = require('@next/mdx')({
 })
 module.exports = withTM(withMDX({
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+  images: {
+    domains: ['cdn.buymeacoffee.com', 'buymeacoffee.com'],
+  },
 }))
