@@ -69,46 +69,14 @@ export default function Form () {
       {/* <script type="module" src="https://unpkg.com/friendly-challenge@0.9.0/widget.module.min.js" async defer></script>
       <script noModule src="https://unpkg.com/friendly-challenge@0.9.0/widget.min.js" async defer></script> */}
     </Head>
-    {!success ? (
-      <div className={styles.formContainer}>
-        <h3>Odio il lavoro perchè:</h3>
-        <textarea
-          placeholder="Perchè è obbligatorio"
-          value={text} onChange={(e) => setText(e.target.value)}
-          className={styles.form}
-        />
-        <div className={styles.wrapperFirma}>
-          <div className={styles.col}>
-            <label htmlFor="text">Professione (opzionale)</label>
-            <input
-              value={nick}
-              onChange={(e) => setNick(e.target.value)}
-              className={`${styles.form} ${styles.nick}`}
-            />
-            <label htmlFor="text">Ometti ongni riferimento personale che possa renderti doxxabile</label>
-          </div>
-          {/* <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: 20 }}>
-            <div ref={container} className="frc-captcha dark" data-sitekey="FCMS9L5U25GTQ7FH" />
-          </div> */}
-        </div>
-        <div style={{ textAlign: 'center', marginTop: 20, display: 'flex', justifyContent: 'center' }}>
-          <Button buttonProps={{ onClick: submit }} label="Testimonia!" labelMobile />
-        </div>
-      </div>
-    ) : (
-      <div style={{ textAlign: 'center'}}>
-        <h3>Grazie della tua testimonianza ❤️</h3>
-        <p>Controlliamo manualmente ogni messaggio per evitare che ci siano informazioni personali compromettenti.</p>
-      </div>
-    )}
-    {/* <div className={styles.formContainer}>
+    <div className={styles.formContainer}>
       <p>Invia una mail a <a href="mailto:mail@odiarelavorare.it" style={{ color: '#FF5F5D', fontWeight: 600 }}>mail@odiarelavorare.it</a></p>
       <p>
         Se non vuoi usare una mail personale usa un servizio anonimo tipo <a href="https://guerrillamail.com" target="_blank" rel="noreferrer">guerrillamail.com</a>
         <br />
         La sicurezza e privacy prima di tutto!
       </p>
-    </div> */}
+    </div>
     </div>
   )
 }
